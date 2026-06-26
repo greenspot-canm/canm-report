@@ -1,131 +1,68 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>CAN-M Report</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <!-- LIFF SDK -->
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
-<title>CAN-M Report</title>
-
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
-<style>
-
-body{
-
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-margin:0;
-padding:30px;
-text-align:center;
-
-}
-
-.card{
-
-background:white;
-padding:30px;
-border-radius:15px;
-max-width:500px;
-margin:auto;
-box-shadow:0 0 10px rgba(0,0,0,.2);
-
-}
-
-img{
-
-width:120px;
-border-radius:50%;
-
-}
-
-button{
-
-padding:12px 25px;
-font-size:18px;
-background:#06C755;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-button:hover{
-
-background:#05a94d;
-
-}
-
-</style>
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="card">
+    <div class="card">
 
-<h1>CAN-M Report</h1>
+        <h1>CAN-M Report</h1>
+        <h3>ระบบแจ้งเหตุความปลอดภัย</h3>
 
-<h2>ระบบแจ้งเหตุและรายงาน</h2>
+        <img id="picture" alt="profile">
 
-<img id="picture">
+        <h2 id="name">Loading...</h2>
+        <p id="userid"></p>
 
-<h3 id="name">Loading...</h3>
+        <button onclick="logout()">Logout</button>
 
-<p id="userid"></p>
+    </div>
 
-<button onclick="logout()">
+    <script>
+        // ใส่ LIFF ID ของคุณ
+        const liffId = "2010511753-AF9f8UtS";
 
-Logout
+        async function main() {
 
-</button>
+            try {
+                await liff.init({ liffId });
 
-</div>
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                    return;
+                }
 
-<script>
+                const profile = await liff.getProfile();
 
-const liffId="2010511753-AF9f8UtS";
+                document.getElementById("picture").src = profile.pictureUrl;
+                document.getElementById("name").innerText = profile.displayName;
+                document.getElementById("userid").innerText = "UserID: " + profile.userId;
 
-async function main(){
+            } catch (err) {
+                console.log(err);
+                alert("LIFF Error: " + err.message);
+            }
+        }
 
-await liff.init({
+        main();
 
-liffId:liffId
-
-});
-
-if(!liff.isLoggedIn()){
-
-liff.login();
-
-return;
-
-}
-
-const profile=await liff.getProfile();
-
-document.getElementById("picture").src=profile.pictureUrl;
-
-document.getElementById("name").innerHTML=profile.displayName;
-
-document.getElementById("userid").innerHTML=profile.userId;
-
-}
-
-main();
-
-function logout(){
-
-liff.logout();
-
-location.reload();
-
-}
-
-</script>
+        function logout() {
+            liff.logout();
+            location.reload();
+        }
+    </script>
 
 </body>
 
