@@ -1,42 +1,166 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-    background: #f4f6f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* ===========================
+   CAN-M Theme v2.0
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 420px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+body{
+
+    background:#f4f6f8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:20px;
+
 }
 
-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 10px;
+.card{
+
+    width:100%;
+
+    max-width:450px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
 }
 
-button {
-    margin-top: 20px;
-    padding: 12px 20px;
-    background: #06C755;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+h1{
+
+    color:#06C755;
+
+    text-align:center;
+
+    margin-bottom:10px;
+
 }
 
-button:hover {
-    background: #05a94d;
+h2,h3{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+p{
+
+    margin-bottom:10px;
+
+}
+
+img{
+
+    display:block;
+
+    margin:auto;
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+label{
+
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:5px;
+
+    font-weight:bold;
+
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+button{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#06C755;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    background:#05a94d;
+
+}
+
+.secondary{
+
+    background:#777;
+
+}
+
+.secondary:hover{
+
+    background:#555;
+
+}
+
+hr{
+
+    margin:20px 0;
+
 }
