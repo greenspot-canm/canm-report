@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CAN-M Report</title>
@@ -9,39 +12,110 @@
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
 
 <div class="card">
 
-    <h1>📋 CAN-M REPORT</h1>
+<h1>📋 CAN-M REPORT</h1>
 
-    <h3>ระบบแจ้งเหตุความปลอดภัย</h3>
+<h3>ระบบแจ้งเหตุความปลอดภัย</h3>
 
-    <hr>
+<label>ชื่อผู้แจ้ง *</label>
 
-    <p>หน้านี้กำลังอยู่ระหว่างการพัฒนา</p>
+<input
+type="text"
+id="employeeName"
+placeholder="กรอกชื่อผู้แจ้ง">
 
-    <p>Version 1.0</p>
+<label>รหัสพนักงาน *</label>
 
-    <br>
+<input
+type="text"
+id="employeeID"
+placeholder="กรอกรหัสพนักงาน">
 
-    <button onclick="goBack()">
-        ⬅ กลับเมนู
-    </button>
+<label>สถานที่ *</label>
+
+<select id="location">
+
+<option value="">-- เลือกสถานที่ --</option>
+
+<option>RS</option>
+
+<option>NK</option>
+
+<option>KL</option>
+
+</select>
+
+<label>ประเภทเหตุ *</label>
+
+<select id="category">
+
+<option value="">-- เลือกประเภทเหตุ --</option>
+
+<option>Near Miss</option>
+
+<option>Unsafe Action</option>
+
+<option>Unsafe Condition</option>
+
+</select>
+
+<label>หัวหน้างาน *</label>
+
+<select id="owner">
+
+<option value="">-- เลือกหัวหน้างาน --</option>
+
+<option value="Wanlapha@greenspot.co.th">วัลภา</option>
+
+<option value="panu.san@greenspot.co.th">ภาณุ</option>
+
+<option value="Boontum@greenspot.co.th">บุญธรรม</option>
+
+<option value="chonant.boo@greenspot.co.th">โชนันท์</option>
+
+<option value="puckinee.jun@greenspot.co.th">ภคินี</option>
+
+<option value="Montree@greenspot.co.th">มนตรี</option>
+
+</select>
+
+<label>รายละเอียดเหตุการณ์ *</label>
+
+<textarea
+id="description"
+placeholder="อธิบายรายละเอียดเหตุการณ์"></textarea>
+
+<label>รูปภาพ *</label>
+
+<input
+type="file"
+id="photo"
+accept="image/*">
+
+<button id="btnSubmit">
+
+📤 ส่งข้อมูล
+
+</button>
+
+<button
+class="secondary"
+onclick="window.location.href='menu.html'">
+
+⬅ กลับเมนู
+
+</button>
 
 </div>
 
-<script>
-
-function goBack(){
-
-    window.location.href="menu.html";
-
-}
-
-</script>
+<script src="../js/report.js"></script>
 
 </body>
+
 </html>
