@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAN-M Report</title>
+
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <img id="picture">
+
+    <h2 id="name">Loading...</h2>
+
+    <p>ยินดีต้อนรับเข้าสู่ระบบ</p>
+
+    <hr>
+
+    <button onclick="location.href='nearmiss.html'">
+        แจ้ง Near Miss
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='unsafe_action.html'">
+        แจ้ง Unsafe Action
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='unsafe_condition.html'">
+        แจ้ง Unsafe Condition
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='history.html'">
+        ติดตามสถานะ
+    </button>
+
+    <br><br>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+<script>
+
+const liffId="2010511753-AF9f8UtS";
+
+async function main(){
+
+    await liff.init({liffId});
+
+    if(!liff.isLoggedIn()){
+
+        liff.login();
+
+        return;
+
+    }
+
+    const profile=await liff.getProfile();
+
+    document.getElementById("picture").src=profile.pictureUrl;
+
+    document.getElementById("name").innerHTML=profile.displayName;
+
+}
+
+main();
+
+function logout(){
+
+    liff.logout();
+
+    location.reload();
+
+}
+
+</script>
+
+</body>
+
+</html>
