@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CAN-M Report</title>
+    <title>CAN-M Menu</title>
 
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
-
 </head>
 
 <body>
 
 <div class="card">
 
-    <img id="picture">
+    <img id="picture" class="profile">
 
     <h2 id="name">Loading...</h2>
 
     <p>ยินดีต้อนรับเข้าสู่ระบบ</p>
 
-    <hr>
-
-    <button onclick="location.href='nearmiss.html'">
-        แจ้ง Near Miss
-    </button>
-
-    <br><br>
-
-    <button onclick="location.href='unsafe_action.html'">
-        แจ้ง Unsafe Action
-    </button>
-
-    <br><br>
-
-    <button onclick="location.href='unsafe_condition.html'">
-        แจ้ง Unsafe Condition
-    </button>
-
-    <br><br>
-
-    <button onclick="location.href='history.html'">
-        ติดตามสถานะ
+    <button onclick="goReport()">
+        📋 แจ้งเหตุ
     </button>
 
     <br><br>
@@ -59,29 +34,34 @@
 
 <script>
 
-const liffId="2010511753-AF9f8UtS";
+const liffId = "2010511753-AF9f8UtS";
 
 async function main(){
 
-    await liff.init({liffId});
+    await liff.init({
+        liffId:liffId
+    });
 
     if(!liff.isLoggedIn()){
-
         liff.login();
-
         return;
-
     }
 
-    const profile=await liff.getProfile();
+    const profile = await liff.getProfile();
 
-    document.getElementById("picture").src=profile.pictureUrl;
+    document.getElementById("picture").src = profile.pictureUrl;
 
-    document.getElementById("name").innerHTML=profile.displayName;
+    document.getElementById("name").innerHTML = profile.displayName;
 
 }
 
 main();
+
+function goReport(){
+
+    alert("หน้ารายงาน จะสร้างในขั้นตอนต่อไป");
+
+}
 
 function logout(){
 
@@ -94,5 +74,4 @@ function logout(){
 </script>
 
 </body>
-
 </html>
