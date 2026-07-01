@@ -2,6 +2,7 @@
 <html lang="th">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,6 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -19,11 +21,13 @@
     <div class="card">
 
         <h1>CAN-M Report</h1>
+
         <h3>ระบบแจ้งเหตุความปลอดภัย</h3>
 
         <img id="picture" alt="profile">
 
         <h2 id="name">Loading...</h2>
+
         <p id="userid"></p>
 
         <button onclick="logout()">Logout</button>
@@ -31,13 +35,16 @@
     </div>
 
     <script>
-        // ใส่ LIFF ID ของคุณ
+
         const liffId = "2010511753-AF9f8UtS";
 
         async function main() {
 
             try {
-                await liff.init({ liffId });
+
+                await liff.init({
+                    liffId: liffId
+                });
 
                 if (!liff.isLoggedIn()) {
                     liff.login();
@@ -48,20 +55,31 @@
 
                 document.getElementById("picture").src = profile.pictureUrl;
                 document.getElementById("name").innerText = profile.displayName;
-                document.getElementById("userid").innerText = "UserID: " + profile.userId;
+                document.getElementById("userid").innerText = "UserID : " + profile.userId;
+
+                // แสดงหน้า Welcome 1 วินาที แล้วไปหน้าเมนู
+                setTimeout(function () {
+                    window.location.href = "pages/menu.html";
+                }, 1000);
 
             } catch (err) {
+
                 console.log(err);
-                alert("LIFF Error: " + err.message);
+                alert("LIFF Error : " + err.message);
+
             }
+
         }
 
         main();
 
         function logout() {
+
             liff.logout();
             location.reload();
+
         }
+
     </script>
 
 </body>
